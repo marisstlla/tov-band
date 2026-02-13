@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOV's Band Night 초대장</title>
+    <style>
+        /* 2번 코드의 핵심 폰트 및 컬러 시스템 반영 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f9f9f9;
+            --card-white: #ffffff;
+            --border-color: #eeeeee;
+            --text-muted: #777777;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        /* 1번의 이미지를 유지하되 2번의 깔끔한 배치 적용 */
+        .header-img {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 70%, var(--card-white) 100%), 
+                        url('https://search.pstatic.net/sunny/?src=https%3A%2F%2Fimg1.daumcdn.net%2Fthumb%2FR1280x0.fpng%2F%3Ffname%3Dhttp%3A%2F%2Ft1.daumcdn.net%2Fbrunch%2Fservice%2Fuser%2F44wc%2Fimage%2FX0P7Ki3JIOkcJxsu97iOlU1HXQQ.png&type=sc960_832'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content {
+            padding: 20px 25px 50px 25px;
+            text-align: center;
+        }
+
+        .sub-title {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0 0 15px 0;
+            letter-spacing: -0.5px;
+            color: var(--primary-color);
+        }
+
+        .intro-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 2번 코드 스타일의 정보 섹션 */
+        .info-section {
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            display: block;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        /* 라인업 리스트 스타일 변경 */
+        .lineup-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .lineup-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 15px;
+            color: #444;
+        }
+
+        .lineup-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 2번 코드 스타일의 버튼 */
+        .btn-map {
+            display: block;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-map:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            padding: 40px 0;
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-img"></div>
+
+        <div class="content">
+            <p class="sub-title">INVITATION</p>
+            <h1>TOV's Band Night</h1>
+            <p class="intro-text">
+                열정과 감동이 가득한 우리들의 뜨거운 합주 소리,<br>
+                그 찬란한 순간에 여러분을 초대합니다.
+            </p>
+
+            <div class="info-section">
+                <div class="info-item">
+                    <span class="info-label">일시 (Date & Time)</span>
+                    <div class="info-value">2026. 02. 22. (SUN) PM 06:30</div>
+                </div>
+                
+                <div class="info-item">
+                    <span class="info-label">장소 (Location)</span>
+                    <div class="info-value">홍대 스페이스 한강</div>
+                </div>
+
+                <div class="info-item">
+                    <span class="info-label">출연 순서 (Line-up)</span>
+                    <ul class="lineup-list">
+                        <li>1. TOV 광교 밴드</li>
+                        <li>2. TOV 동탄 밴드</li>
+                        <li>3. 동밴동 B팀</li>
+                        <li>4. 광밴동</li>
+                        <li>5. 동밴동 A팀</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="https://naver.me/GpCzTDlp" class="btn-map" target="_blank">오시는 길 확인하기</a>
+
+            <footer>
+                © 2026 TOV MUSIC UNION. ALL RIGHTS RESERVED.
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
