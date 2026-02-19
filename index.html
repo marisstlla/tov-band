@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOV's Band Night 초대장</title>
     <style>
-        /* 2번 코드의 핵심 폰트 및 컬러 시스템 반영 */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
 
         :root {
@@ -35,7 +34,6 @@
             min-height: 100vh;
         }
 
-        /* 1번의 이미지를 유지하되 2번의 깔끔한 배치 적용 */
         .header-img {
             width: 100%;
             height: 350px;
@@ -72,24 +70,17 @@
             margin-bottom: 30px;
         }
 
-        /* 2번 코드 스타일의 정보 섹션 */
         .info-section {
             background: #fdfdfd;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 25px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: left;
         }
 
-        .info-item {
-            margin-bottom: 20px;
-        }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-
+        .info-item { margin-bottom: 20px; }
+        .info-item:last-child { margin-bottom: 0; }
         .info-label {
             font-weight: bold;
             display: block;
@@ -97,31 +88,85 @@
             font-size: 13px;
             margin-bottom: 5px;
         }
+        .info-value, .lineup-list li { 
+    font-size: 17px; 
+    font-weight: 700; 
+}
 
-        .info-value {
-            font-size: 17px;
-            font-weight: 700;
-        }
-
-        /* 라인업 리스트 스타일 변경 */
-        .lineup-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-
+        .lineup-list { list-style: none; padding: 0; margin-top: 10px; }
         .lineup-list li {
             padding: 10px 0;
             border-bottom: 1px dashed var(--border-color);
-            font-size: 15px;
-            color: #444;
+            color: var(--primary-color);
+        }
+        .lineup-list li:last-child { border-bottom: none; }
+
+        /* --- 추가된 세트리스트 스타일 --- */
+        .setlist-wrapper {
+            margin-top: 10px;
+            border: 1.5px solid var(--primary-color);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .lineup-list li:last-child {
-            border-bottom: none;
+        .setlist-btn {
+            width: 100%;
+            padding: 18px;
+            background: #fff;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
         }
 
-        /* 2번 코드 스타일의 버튼 */
+        .setlist-btn:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .setlist-btn.active:after {
+            transform: rotate(180deg);
+        }
+
+        .setlist-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: #fcfcfc;
+            text-align: left;
+        }
+
+        .setlist-inner {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .setlist-band {
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-top: 15px;
+            display: block;
+        }
+        .setlist-band:first-child { margin-top: 0; }
+        
+        .setlist-songs {
+    color: var(--primary-color); /* 곡 제목도 선명하게 남색으로 변경 */
+    padding-left: 5px;
+    font-weight: 700; /* 곡 제목 볼드 처리 */
+    font-size: 14px;
+    line-height: 2.0; /* 곡 간격이 너무 붙지 않게 조절 */
+}
+
+        /* 오시는 길 버튼 */
         .btn-map {
             display: block;
             background: var(--primary-color);
@@ -129,14 +174,9 @@
             text-decoration: none;
             padding: 18px;
             border-radius: 12px;
-            margin-top: 20px;
+            margin-top: 12px;
             font-weight: bold;
             font-size: 16px;
-            transition: opacity 0.2s;
-        }
-
-        .btn-map:hover {
-            opacity: 0.9;
         }
 
         footer {
@@ -144,7 +184,6 @@
             font-size: 12px;
             color: #999;
             text-align: center;
-            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -183,12 +222,88 @@
                 </div>
             </div>
 
-            <a href="https://naver.me/GpCzTDlp" class="btn-map" target="_blank">오시는 길 확인하기</a>
+            <div class="setlist-wrapper">
+                <button class="setlist-btn" onclick="toggleSetlist()">🎸 SET LIST 확인하기</button>
+                <div id="setlistContent" class="setlist-content">
+                    <div class="setlist-inner">
+    <span class="setlist-band">1. TOV 광교 밴드</span>
+    <div class="setlist-songs">
+        Nirvana - Smells like teen spirit <br>
+        볼빨간사춘기 - you(=I)<br>
+        WOODZ - Drowning<br>
+        DAY6 - HAPPY<br>
+    </div>
+
+    <span class="setlist-band">2. TOV 동탄 밴드</span>
+    <div class="setlist-songs">
+        Cory wong - Cosmic sans<br>
+        노네 - 화목한 우리집<br>
+        Tom misch - Disco yes<br>
+        한로로 - 사랑하게 될 거야<br>
+        보아 - 아틀란티스 소녀<br>
+    </div>
+
+    <span class="setlist-band">3. 동밴동 B팀</span>
+    <div class="setlist-songs">
+        한로로 - 입춘<br>
+        백예린 - Square<br>
+        검정치마 - Antifreeze<br>
+        윤하 - 포인트 니모<br>
+        Adi Oasis - Whisper my name<br>
+        Oasis - Stand by me<br>
+        Adam Levine - Lost star<br>
+        Oasis - Whatever<br>
+        Oasis - Champagne Supernova<br>
+    </div>
+
+    <span class="setlist-band">4. 광밴동</span>
+    <div class="setlist-songs">
+        자우림 - Stay with me<br>
+        이츠 - 아카시아<br>
+        이츠 - 청록<br>
+        한로로 - 용의자<br>
+        드림캐쳐 - 날아올라(Fly High)<br>
+        요루시카 - 그저 네게 맑아라<br>
+        요루시카 - 그래서 나는 음악을 그만두었다<br>
+        케이온(K-ON) ost - 후와후와타임<br>
+    </div>
+
+    <span class="setlist-band">5. 동밴동 A팀</span>
+    <div class="setlist-songs">
+        윤마치 - 초록<br>
+        유다빈밴드 - 바람<br>
+        혁오 - 가죽자켓<br>
+        험프백 - 친애하는 소년이여<br>
+        유령서점 - 유령서점<br>
+        Oasis - Don't Look Back In Anger<br>
+        브로큰발렌타인 - 알루미늄<br>
+    </div>
+
+    </div>
+                </div>
+            </div>
+
+            <a href="https://naver.me/GpCzTDlp" class="btn-map" target="_blank">📍 오시는 길 확인하기</a>
 
             <footer>
                 © 2026 TOV MUSIC UNION. ALL RIGHTS RESERVED.
             </footer>
         </div>
     </div>
+
+    <script>
+        function toggleSetlist() {
+            const content = document.getElementById('setlistContent');
+            const btn = document.querySelector('.setlist-btn');
+            
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                btn.classList.remove('active');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                btn.classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
